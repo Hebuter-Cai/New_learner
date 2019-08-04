@@ -1,0 +1,15 @@
+'''
+
+'''
+num=np.random.randint(1,100)
+right=True
+while right:
+    no1=int(input('请输入数字：'))
+    if no1<num:
+        print('大一点')
+    elif no1>num:
+        print('小一点')
+    else:
+        right=False
+        print('猜对了')
+    
