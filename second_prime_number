@@ -2,21 +2,30 @@
 This codeblock used to find  "prime number"
 @Cai
 '''
-#
+#第一种方法
+'''
+推到公式，质数
+'''
 def prime_number(n): 
-    l=list()
-    for i in range(1,n+1):
-        
-        if n%i==0:
-            l.append(i)
-    if len(l)==2:
-        return n
+    if n>1:
+        for i in range(2,n):
+            if (n%i==0):
+                return None
+        else:
+            return n
+    else:
+        return None
  
 
-
-n=1000
-for i in range(2,n):
+n=10000
+i=0
+a=1
+b=1
+while True:
     #print(i)
+    if a*b>n:
+        break
+    i+=1
     if prime_number(i):
         a=2**i-1
         #print(a)
@@ -24,3 +33,23 @@ for i in range(2,n):
             b=2**(i-1)
             #print(b)
             print(a*b)
+     
+
+#第二种方法
+'''
+除自身以外的约数相加
+'''
+
+import time
+import math
+
+for num in range(1, 100):
+    sum = 0
+    for factor in range(1, int(math.sqrt(num)) + 1):
+        #print(factor)
+        if num % factor == 0:
+            sum += factor
+            if factor > 1 and num / factor != factor:
+                sum += num / factor
+    if sum == num:
+        print(num)
