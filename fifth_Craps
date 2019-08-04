@@ -1,0 +1,33 @@
+'''
+Craps赌博游戏
+@Cai
+'''
+n=1
+first_sum=0
+while True:
+    a=np.random.randint(1,6)
+    b=np.random.randint(1,6)
+    if n==1 :
+        if a+b==7 or a+b==11:
+            print('第%d次:' % n,'玩家胜')
+            break
+        elif a+b==2 or a+b==3 or a+b==12:
+            print('第%d次:' % n,'庄家胜')
+            break
+        else:
+            first_sum=a+b
+            n+=1
+    else:
+        if a+b==first_sum:
+            print('第%d次:' % n,'玩家胜')
+            break
+        elif a+b==7:
+            print('第%d次:' % n,'庄家胜')
+            break
+        else:
+            n+=1
+            continue
+ 
+ '''
+ 
+ '''
