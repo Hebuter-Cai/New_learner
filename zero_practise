@@ -1,0 +1,73 @@
+'''
+生成制定长度的验证码，数字字母组成
+'''
+import numpy as np
+
+def generate_code(len=4):
+    all_chars='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    code_str=''
+    for _ in range(0,len):
+        code_str+=all_chars[np.random.randint(0,61)]
+    return code_str
+ 
+ 
+ '''
+ 获得文件的后缀名
+ '''
+ def get_suffix(filename, has_dot=False):
+    pos=filename.rfind('.')
+    if 0<pos<len(filename)-1:
+        
+        suffix=filename[pos:] if has_dot else filename[pos+1:]
+        return suffix
+    else:
+        return ''
+        
+  
+  '''
+  返回一列数值中的最大值与第二大数值
+  '''
+  def get_max(x):
+    x1,x2=(x[0],x[1]) if x[0]>x[1] else (x[1],x[0])
+    for index in range(2,len(x)):
+        if x[index]>x1:
+            x2=x1
+            x1=x[index]
+        elif x[index]>x2:
+            x2=x[index]
+    return (x1,x2)
+  
+ 
+ '''
+ 给出日期，输出这是当年的第几天
+ '''
+ def is_leap_year(year):
+    if year%4==0 and year%100!=0 or year%400==0:
+        return True
+    else:
+        return False
+  
+import numpy as np
+def which_day(year,month,day):
+    days=[[31,29,31,30,31,30,31,31,30,31,30,31],[31,28,31,30,31,30,31,31,30,31,30,31]]
+    if is_leap_year:
+        return np.sum(days[0][:month-1])+day
+    else:
+        return np.sum(days[1][:month-1])+day  
+  
+ '''
+ 打印杨辉三角
+ '''
+ def yang_hui(n):
+    yh=[[]]*n
+    for  row in range(0,n):
+        yh[row]=[None]*(row+1)
+        for col in range(0,len(yh[row])):
+            if col==0 or col==row:
+                yh[row][col]=1
+            else:
+                yh[row][col]=yh[row-1][col-1]+yh[row-1][col]
+                
+        print(yh[row])
+  
+  
