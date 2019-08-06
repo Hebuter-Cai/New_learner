@@ -70,4 +70,22 @@ def which_day(year,month,day):
                 
         print(yh[row])
   
+'''
+双色球
+'''
+import numpy as np
+import random
+def display(selected_balls):
+    for index,value in enumerate(selected_balls):
+        if index==len(selected_balls)-1:
+            print('|',end='')
+        print('%02d'% value,end=' ')
+        
+def select_balls():
+    red_balls=[x for x in range(1,34)]
+    selected=random.sample(red_balls,6)  #red_balls.random_sample(6)#
+    selected.sort()
+    selected.append(np.random.randint(1,16))
+    display(selected)
+
   
