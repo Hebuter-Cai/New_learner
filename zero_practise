@@ -88,4 +88,82 @@ def select_balls():
     selected.append(np.random.randint(1,16))
     display(selected)
 
+
+'''
+《幸运的基督徒》
+有15个基督徒和15个非基督徒在海上遇险，为了能让一部分人活下来不得不将其中15个人扔到海里面去，有个人想了个办法就是大家围成一个圈，由某个人开始从1报数，
+报到9的人就扔到海里面，他后面的人接着从1开始报数，报到9的人继续扔到海里面，直到扔掉15个人。由于上帝的保佑，15个基督徒都幸免于难，问这些人最开始是怎么
+站的，哪些位置是基督徒哪些位置是非基督徒。
+'''
+num=15
+c=9
+n=1
+list=[x for x in range(1,31)]
+while len(list)>num:
+    if n%c!=0:
+        list=list[1:]+[list[0]]
+        n+=1
+    else:
+        list=list[1:]
+        n+=1
+    print(list)
+
+
+'''
+井字棋游戏
+'''
   
+
+
+
+
+'''
+创建类
+'''
+#Student类
+class Student(object):
+    
+    def __init__(self,name,age):
+        self.name=name
+        self.age=age
+        
+    def study(self,course_name):
+        print('%s 正在学习%s' % (self.name,course_name))
+    
+    def watch_movie(self):
+        if self.age<18:
+            print('%s只能看《熊出没》'%self.name)
+        else:
+            print('%s正在看岛国电影'%self.name)
+            
+#Clock类
+from time import sleep
+class Clock(object):
+    
+    def __init__(self,second=0,minute=0,hour=0):
+        self.second=second
+        self.minute=minute
+        self.hour=hour
+        
+    def run(self):
+        self.second+=1
+        if self.second==60:
+            self.second=0
+            self.minute+=1
+            if self.minute==60:
+                self.minute=0
+                self.hour+=1
+                if self.hour==24:
+                    self.hour=0
+                    
+    def show(self):
+        print('%d:%d:%d' % (self.hour,self.minute,self.second))
+
+def main():
+    clock=Clock(second=24,minute=57,hour=23)
+    n=1
+    while n<300:
+        clock.run()
+        sleep(1)
+        clock.show()
+        n+=1
